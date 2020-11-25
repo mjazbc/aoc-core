@@ -4,7 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 
-namespace Util
+namespace aoc_core
 {
     public class AocInput
     {

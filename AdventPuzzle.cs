@@ -3,7 +3,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 
-namespace Util
+namespace aoc_core
 {
     public abstract class AdventPuzzle
     {
