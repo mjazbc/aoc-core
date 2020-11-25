@@ -7,26 +7,11 @@ namespace aoc_core
 {
     public abstract class AdventPuzzle
     {
-        private readonly string _inputPath = "../../../input.txt";
         protected AocInput Input { get; private set; }
-        protected string inputText;
-        public AdventPuzzle()
-        {
-            this.Input = new AocInput(_inputPath);
-        }
 
-        public AdventPuzzle(string inputPath)
+        public void LoadInputFile(string filePath)
         {
-            _inputPath = inputPath;
-        }
-
-        public T[] ReadInputArray<T>()
-        {
-            return File.ReadAllLines(_inputPath).Select(l => (T)Convert.ChangeType(l, typeof(T))).ToArray();
-        }
-        public T ReadInputText<T>()
-        {
-            return (T)Convert.ChangeType(File.ReadAllText(_inputPath), typeof(T));
+            Input = new AocInput(filePath);
         }
 
         public abstract string SolveFirstPuzzle();
@@ -35,6 +20,8 @@ namespace aoc_core
 
         public void Solve(Puzzle puzzle = Puzzle.Both)
         {
+            if(Input == null)
+                throw new InvalidDataException("Missing puzzle input.");
 
             Stopwatch watch = new Stopwatch();
 
