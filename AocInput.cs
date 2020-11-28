@@ -8,7 +8,7 @@ namespace aoc_core
     {
         private string _inputText;
         
-        public bool IsSet;
+        public bool IsSet {get; private set;}
 
         public void LoadFromFile(string filePath)
         {
