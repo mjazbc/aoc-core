@@ -7,7 +7,7 @@ namespace aoc_core
 {
     public abstract class AdventPuzzle
     {
-        protected AocInput Input { get; private set; }
+        public AocInput Input { get; private set; }
         public AdventPuzzle()
         {
             Input = new AocInput();
