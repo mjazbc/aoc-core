@@ -8,10 +8,9 @@ namespace aoc_core
     public abstract class AdventPuzzle
     {
         protected AocInput Input { get; private set; }
-
-        public void LoadInputFile(string filePath)
+        public AdventPuzzle()
         {
-            Input = new AocInput(filePath);
+            Input = new AocInput();
         }
 
         public abstract string SolveFirstPuzzle();
@@ -20,8 +19,8 @@ namespace aoc_core
 
         public void Solve(Puzzle puzzle = Puzzle.Both)
         {
-            if(Input == null)
-                throw new InvalidDataException("Missing puzzle input.");
+            if(!Input.IsSet)
+                throw new InvalidDataException("Missing puzzle input. Input should be loaded with Input.Load before executing solve.");
 
             Stopwatch watch = new Stopwatch();
 

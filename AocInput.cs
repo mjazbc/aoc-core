@@ -1,19 +1,31 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
 
 namespace aoc_core
 {
     public class AocInput
     {
-        private readonly string _inputText;
-        public AocInput(string inputPath)
-        {
-            _inputText = File.ReadAllText(inputPath);
-        }
+        private string _inputText;
+        
+        public bool IsSet;
 
+        public void LoadFromFile(string filePath)
+        {
+            _inputText = File.ReadAllText(filePath); 
+            IsSet = true;
+        }
+        public void LoadInput(string input)
+        {
+            _inputText = input;
+            IsSet = true;
+        }
+        public void LoadInput(int input)
+        {
+            _inputText = input.ToString();
+            IsSet = true;
+        }
+        
         public int AsInt() => int.Parse(_inputText);
         public string AsString() => _inputText;
         public int[] AsIntArray(char separator = '\n') => ConvertToArray<int>(separator);
