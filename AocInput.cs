@@ -15,12 +15,12 @@ namespace aoc_core
             _inputText = File.ReadAllText(filePath); 
             IsSet = true;
         }
-        public void LoadInput(string input)
+        public void Load(string input)
         {
             _inputText = input;
             IsSet = true;
         }
-        public void LoadInput(int input)
+        public void Load(int input)
         {
             _inputText = input.ToString();
             IsSet = true;
