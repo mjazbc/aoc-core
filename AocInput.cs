@@ -29,11 +29,12 @@ namespace aoc_core
         
         public int AsInt() => int.Parse(_inputText);
         public string AsString() => _inputText;
-        public int[] AsIntArray(char separator = '\n') => ConvertToArray<int>(separator);
-        public string[] AsStringArray(char separator = '\n') => ConvertToArray<string>(separator);
+        public int[] AsIntArray(string separator = "\r\n") => ConvertToArray<int>(separator);
+        public string[] AsStringArray(string separator = "\r\n") => ConvertToArray<string>(separator);
+        public char[][] AsCharMatrix(string separator = "\r\n") => AsStringArray(separator).Select(line => line.ToCharArray()).ToArray();
         public T AsCustomType<T>(Func<string, T> TypeConverter) => TypeConverter(_inputText);
-        public IEnumerable<T> AsCustomTypeEnumerable<T>(Func<string, T> TypeConverter, char separator = '\n') => _inputText.Split(separator).Select(l => TypeConverter(l));
-        private T[] ConvertToArray<T>(char separator)
+        public IEnumerable<T> AsCustomTypeEnumerable<T>(Func<string, T> TypeConverter, string separator = "\r\n") => _inputText.Split(separator).Select(l => TypeConverter(l));
+        private T[] ConvertToArray<T>(string separator)
         {
             return _inputText.Split(separator).Select(l => (T)Convert.ChangeType(l, typeof(T))).ToArray();
         }
