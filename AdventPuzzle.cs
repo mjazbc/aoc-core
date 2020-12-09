@@ -13,6 +13,9 @@ namespace aoc_core
             Input = new AocInput();
         }
 
+        public virtual void ParseInput(){
+            
+        }
         public abstract string SolveFirstPuzzle();
 
         public abstract string SolveSecondPuzzle();

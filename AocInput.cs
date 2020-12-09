@@ -31,6 +31,9 @@ namespace aoc_core
         public string AsString() => _inputText;
         public int[] AsIntArray(string separator) => ConvertToArray<int>(separator);
         public int[] AsIntArray() => ConvertToArray<int>(Environment.NewLine);
+        
+        public long[] AsLongArray(string separator) => ConvertToArray<long>(separator);
+        public long[] AsLongArray() => ConvertToArray<long>(Environment.NewLine);
         public string[] AsStringArray(string separator) => ConvertToArray<string>(separator);
         public string[] AsStringArray() => ConvertToArray<string>(Environment.NewLine);
         public char[][] AsCharMatrix(string separator) => AsStringArray(separator).Select(line => line.ToCharArray()).ToArray();
