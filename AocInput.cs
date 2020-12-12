@@ -37,7 +37,16 @@ namespace aoc_core
         public string[] AsStringArray(string separator) => ConvertToArray<string>(separator);
         public string[] AsStringArray() => ConvertToArray<string>(Environment.NewLine);
         public char[][] AsCharMatrix(string separator) => AsStringArray(separator).Select(line => line.ToCharArray()).ToArray();
-        public char[][] AsCharMatrix() => AsStringArray(Environment.NewLine).Select(line => line.ToCharArray()).ToArray();
+        public char[,] AsCharMatrix() 
+        { 
+            var lines = AsStringArray(Environment.NewLine).Select(x => x.ToCharArray()).ToArray();
+            var output = new char[lines.Length, lines[0].Length];
+            for(int y = 0; y < output.GetLength(0); y++)
+                for(int x = 0; x < output.GetLength(1); x++)
+                    output[y,x] = lines[y][x];
+
+            return output;
+        }
         public T AsCustomType<T>(Func<string, T> TypeConverter) => TypeConverter(_inputText);
         public IEnumerable<T> AsCustomTypeEnumerable<T>(Func<string, T> TypeConverter, string separator) => _inputText.Split(separator).Select(l => TypeConverter(l));
         public IEnumerable<T> AsCustomTypeEnumerable<T>(Func<string, T> TypeConverter) => _inputText.Split(Environment.NewLine).Select(l => TypeConverter(l));
